@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подборка Фильмов — Режиссёры и жанры</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .movie-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .movie-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+        }
+
+        .copy-btn {
+            transition: all 0.2s;
+        }
+        
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Telegram style formatting area */
+        .tg-preview {
+            background: #18222d;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        /* мета-информация: режиссёр и жанр */
+        .movie-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+        }
+        .meta-item {
+            background: #0f172a;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #94a3b8;
+            border: 0.5px solid #334155;
+        }
+        .meta-item i {
+            font-size: 0.75rem;
+            color: #60a5fa;
+        }
+        .movie-desc {
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-10 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-white mb-2"><i class="fas fa-film text-blue-500 mr-3"></i>Подборка Фильмов</h1>
+                <p class="text-slate-400">Режиссёры, жанры и отличное кино на вечер</p>
+            </div>
+            <button id="copyBtn" class="copy-btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium flex items-center shadow-lg shadow-blue-500/30">
+                <i class="fab fa-telegram-plane mr-2 text-xl"></i>
+                Скопировать для Telegram
+            </button>
+        </div>
+
+        <!-- Telegram Preview Note -->
+        <div class="tg-preview rounded-r-lg p-4 mb-8 text-sm text-slate-300">
+            <p><i class="fas fa-info-circle mr-2 text-blue-400"></i>Здесь карточки красиво оформлены с постерами. Нажав кнопку выше, вы скопируете идеально отформатированный текст с жирным шрифтом, режиссёрами и жанрами для отправки в Telegram.</p>
+        </div>
+
+        <!-- Movie List -->
+        <div class="space-y-6" id="movieList">
+            <!-- Movie 1: Живое (2017) -->
+            <div class="movie-card bg-slate-800 rounded-xl overflow-hidden flex flex-col sm:flex-row shadow-lg border border-slate-700/50">
+                <div class="sm:w-48 h-64 sm:h-auto flex-shrink-0 relative bg-slate-900">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c4/Life_%282017_film%29.png" alt="Живое" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x600/1e293b/94a3b8?text=Живое+(2017)'">
+                </div>
+                <div class="p-6 flex flex-col justify-center">
+                    <h2 class="text-xl font-bold text-white mb-1">Живое (2017)</h2>
+                    <div class="movie-meta">
+                        <span class="meta-item"><i class="fas fa-user"></i> Дэниел Эспиноса</span>
+                        <span class="meta-item"><i class="fas fa-tag"></i> Ужасы, Фантастика, Триллер</span>
+                    </div>
+                    <p class="movie-desc text-sm sm:text-base">Исследователи находят жизнь на Марсе, не зная, к чему это приведёт.</p>
+                </div>
+            </div>
+
+            <!-- Movie 2: Звездные врата (1994) -->
+            <div class="movie-card bg-slate-800 rounded-xl overflow-hidden flex flex-col sm:flex-row shadow-lg border border-slate-700/50">
+                <div class="sm:w-48 h-64 sm:h-auto flex-shrink-0 relative bg-slate-900">
+                    <img src="https://sun9-42.userapi.com/s/v1/ig1/JTdHEHsjjA0oJwTLemrAHWoeDMj4rZkGb0y1BVl8mH_7-F-b0aJZyCCRDCjasn0L42bcEi2x.jpg?quality=96&as=32x55,48x83,72x125,108x187,160x277,240x416,360x624,480x832,500x867&from=bu&cs=500x0" alt="Звездные врата" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x600/1e293b/94a3b8?text=Звездные+врата+(1994)'">
+                </div>
+                <div class="p-6 flex flex-col justify-center">
+                    <h2 class="text-xl font-bold text-white mb-1">Звездные врата (1994)</h2>
+                    <div class="movie-meta">
+                        <span class="meta-item"><i class="fas fa-user"></i> Роланд Эммерих</span>
+                        <span class="meta-item"><i class="fas fa-tag"></i> Фантастика, Приключения, Боевик</span>
+                    </div>
+                    <p class="movie-desc text-sm sm:text-base">1928 год, Египет. Найден странный артефакт. Спустя годы его изучают на военной базе. Выясняется: это портал в другие миры. Группа спецназа, учёный и полковник отправляются сквозь врата — их ждут испытания, от которых зависит судьба человечества.</p>
+                </div>
+            </div>
+
+            <!-- Movie 3: Тихое место (2018) -->
+            <div class="movie-card bg-slate-800 rounded-xl overflow-hidden flex flex-col sm:flex-row shadow-lg border border-slate-700/50">
+                <div class="sm:w-48 h-64 sm:h-auto flex-shrink-0 relative bg-slate-900">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a0/A_Quiet_Place_film_poster.png" alt="Тихое место" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x600/1e293b/94a3b8?text=Тихое+место+(2018)'">
+                </div>
+                <div class="p-6 flex flex-col justify-center">
+                    <h2 class="text-xl font-bold text-white mb-1">Тихое место (2018)</h2>
+                    <div class="movie-meta">
+                        <span class="meta-item"><i class="fas fa-user"></i> Джон Красински</span>
+                        <span class="meta-item"><i class="fas fa-tag"></i> Ужасы, Драма, Фантастика</span>
+                    </div>
+                    <p class="movie-desc text-sm sm:text-base">Мир захватили монстры, реагирующие на звук. Семья с детьми живёт на ферме, общаясь жестами и передвигаясь бесшумно. Но даже дом не может оставаться самым тихим местом.</p>
+                </div>
+            </div>
+
+            <!-- Movie 4: Не дыши (2015) -->
+            <div class="movie-card bg-slate-800 rounded-xl overflow-hidden flex flex-col sm:flex-row shadow-lg border border-slate-700/50">
+                <div class="sm:w-48 h-64 sm:h-auto flex-shrink-0 relative bg-slate-900">
+                    <img src="https://www.film.ru/sites/default/files/movies/posters/14949383-2116401.jpeg" alt="Не дыши" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x600/1e293b/94a3b8?text=Не+дыши+(2015)'">
+                </div>
+                <div class="p-6 flex flex-col justify-center">
+                    <h2 class="text-xl font-bold text-white mb-1">Не дыши (2015)</h2>
+                    <div class="movie-meta">
+                        <span class="meta-item"><i class="fas fa-user"></i> Федерико Альварес</span>
+                        <span class="meta-item"><i class="fas fa-tag"></i> Триллер, Ужасы, Криминал</span>
+                    </div>
+                    <p class="movie-desc text-sm sm:text-base">Трое приятелей решают ограбить слепого одинокого старика. Но жертва неожиданно превращается в безжалостного преследователя.</p>
+                </div>
+            </div>
+
+            <!-- Movie 5: Проект «Конец света» (2026) -->
+            <div class="movie-card bg-slate-800 rounded-xl overflow-hidden flex flex-col sm:flex-row shadow-lg border border-slate-700/50">
+                <div class="sm:w-48 h-64 sm:h-auto flex-shrink-0 relative bg-slate-900">
+                    <img src="https://upload.wikimedia.org/wikipedia/ru/b/b6/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82_%C2%AB%D0%9A%D0%BE%D0%BD%D0%B5%D1%86_%D1%81%D0%B2%D0%B5%D1%82%D0%B0%C2%BB.jpg" alt="Проект «Конец света»" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x600/1e293b/94a3b8?text=Проект+«Конец+света»+(2026)'">
+                </div>
+                <div class="p-6 flex flex-col justify-center">
+                    <h2 class="text-xl font-bold text-white mb-1">Проект «Конец света» (2026)</h2>
+                    <div class="movie-meta">
+                        <span class="meta-item"><i class="fas fa-user"></i> Фил Лорд & Кристофер Миллер</span>
+                        <span class="meta-item"><i class="fas fa-tag"></i> Научная фантастика, Триллер, Драма</span>
+                    </div>
+                    <p class="movie-desc text-sm sm:text-base">Астронавт Райленд Грейс приходит в себя на корабле без памяти. Он думает, что остался один. Ему предстоит выжить и, возможно, найти других.</p>
+                </div>
+            </div>
+
+            <!-- Movie 6: Зомби по имени Шон (2004) -->
+            <div class="movie-card bg-slate-800 rounded-xl overflow-hidden flex flex-col sm:flex-row shadow-lg border border-slate-700/50">
+                <div class="sm:w-48 h-64 sm:h-auto flex-shrink-0 relative bg-slate-900">
+                    <img src="https://cdn.ruwiki.ru/ruwiki/files/thumb/1/1e/Shaun-of-the-Dead.jpg/400px-Shaun-of-the-Dead.jpg?20131024195431" alt="Зомби по имени Шон" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x600/1e293b/94a3b8?text=Зомби+по+имени+Шон+(2004)'">
+                </div>
+                <div class="p-6 flex flex-col justify-center">
+                    <h2 class="text-xl font-bold text-white mb-1">Зомби по имени Шон (2004)</h2>
+                    <div class="movie-meta">
+                        <span class="meta-item"><i class="fas fa-user"></i> Эдгар Райт</span>
+                        <span class="meta-item"><i class="fas fa-tag"></i> Комедия, Ужасы, Зомби-муви</span>
+                    </div>
+                    <p class="movie-desc text-sm sm:text-base">У Шона — разлад с подругой и бытовые проблемы. Тут ещё начинается эпидемия зомби. Он с другом вооружаются лопатами и идут на войну с живыми мертвецами.</p>
+                </div>
+            </div>
+
+            <!-- Movie 7: Малыш на драйве (2017) -->
+            <div class="movie-card bg-slate-800 rounded-xl overflow-hidden flex flex-col sm:flex-row shadow-lg border border-slate-700/50">
+                <div class="sm:w-48 h-64 sm:h-auto flex-shrink-0 relative bg-slate-900">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/8/8e/Baby_Driver_poster.jpg" alt="Малыш на драйве" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x600/1e293b/94a3b8?text=Малыш+на+драйве+(2017)'">
+                </div>
+                <div class="p-6 flex flex-col justify-center">
+                    <h2 class="text-xl font-bold text-white mb-1">Малыш на драйве (2017)</h2>
+                    <div class="movie-meta">
+                        <span class="meta-item"><i class="fas fa-user"></i> Эдгар Райт</span>
+                        <span class="meta-item"><i class="fas fa-tag"></i> Боевик, Музыкальный, Криминал, Триллер</span>
+                    </div>
+                    <p class="movie-desc text-sm sm:text-base">Парень по кличке Малыш — водитель бандитов на побегушках. Он любит музыку, скорость и адреналин. Влюбившись, он решает завязать, но вынужден выполнить последнее задание — возможно, роковое.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 flex items-center">
+        <i class="fas fa-check-circle mr-2"></i>
+        <span>Текст скопирован!</span>
+    </div>
+
+    <script>
+        // Расширенный массив с режиссёрами и жанрами (для копирования в Telegram)
+        const moviesData = [
+            {
+                title: "Живое (2017)",
+                director: "Дэниел Эспиноса",
+                genres: "Ужасы, Фантастика, Триллер",
+                desc: "Исследователи находят жизнь на Марсе, не зная, к чему это приведёт."
+            },
+            {
+                title: "Звездные врата (1994)",
+                director: "Роланд Эммерих",
+                genres: "Фантастика, Приключения, Боевик",
+                desc: "1928 год, Египет. Найден странный артефакт. Спустя годы его изучают на военной базе. Выясняется: это портал в другие миры. Группа спецназа, учёный и полковник отправляются сквозь врата — их ждут испытания, от которых зависит судьба человечества."
+            },
+            {
+                title: "Тихое место (2018)",
+                director: "Джон Красински",
+                genres: "Ужасы, Драма, Фантастика",
+                desc: "Мир захватили монстры, реагирующие на звук. Семья с детьми живёт на ферме, общаясь жестами и передвигаясь бесшумно. Но даже дом не может оставаться самым тихим местом."
+            },
+            {
+                title: "Не дыши (2015)",
+                director: "Федерико Альварес",
+                genres: "Триллер, Ужасы, Криминал",
+                desc: "Трое приятелей решают ограбить слепого одинокого старика. Но жертва неожиданно превращается в безжалостного преследователя."
+            },
+            {
+                title: "Проект «Конец света» (2026)",
+                director: "Фил Лорд & Кристофер Миллер",
+                genres: "Научная фантастика, Триллер, Драма",
+                desc: "Астронавт Райленд Грейс приходит в себя на корабле без памяти. Он думает, что остался один. Ему предстоит выжить и, возможно, найти других."
+            },
+            {
+                title: "Зомби по имени Шон (2004)",
+                director: "Эдгар Райт",
+                genres: "Комедия, Ужасы, Зомби-муви",
+                desc: "У Шона — разлад с подругой и бытовые проблемы. Тут ещё начинается эпидемия зомби. Он с другом вооружаются лопатами и идут на войну с живыми мертвецами."
+            },
+            {
+                title: "Малыш на драйве (2017)",
+                director: "Эдгар Райт",
+                genres: "Боевик, Музыкальный, Криминал, Триллер",
+                desc: "Парень по кличке Малыш — водитель бандитов на побегушках. Он любит музыку, скорость и адреналин. Влюбившись, он решает завязать, но вынужден выполнить последнее задание — возможно, роковое."
+            }
+        ];
+
+        document.getElementById('copyBtn').addEventListener('click', async () => {
+            // Формируем стилизованный текст для Telegram с поддержкой Markdown (**жирный**, — списки)
+            // Telegram поддерживает жирный текст через ** **, а также разрывы строк.
+            // Добавляем режиссёра и жанры в красивом формате.
+            let textToCopy = "🎬 *Подборка отличных фильмов на вечер* 🍿\n\n";
+            
+            moviesData.forEach(movie => {
+                textToCopy += `**${movie.title}**\n`;
+                textToCopy += `👨‍🎬 Режиссёр: ${movie.director}\n`;
+                textToCopy += `🎭 Жанр: ${movie.genres}\n`;
+                textToCopy += `📖 ${movie.desc}\n\n`;
+            });
+            
+            textToCopy += "━━━━━━━━━━━━━━━━\nПриятного просмотра! 🔥";
+
+            // Вариант HTML для тех случаев, когда буфер обмена может принимать форматирование (но в телеграме лучше работает текст с Markdown)
+            let htmlToCopy = "<b>🎬 Подборка отличных фильмов на вечер 🍿</b><br><br>";
+            moviesData.forEach(movie => {
+                htmlToCopy += `<b>${movie.title}</b><br>`;
+                htmlToCopy += `👨‍🎬 Режиссёр: ${movie.director}<br>`;
+                htmlToCopy += `🎭 Жанр: ${movie.genres}<br>`;
+                htmlToCopy += `📖 ${movie.desc}<br><br>`;
+            });
+            htmlToCopy += "━━━━━━━━━━━━━━━━<br>Приятного просмотра! 🔥";
+
+            // Пытаемся скопировать и plain, и html для максимальной совместимости
+            try {
+                // Современный метод с ClipboardItem (поддерживает несколько форматов)
+                const clipboardItem = new ClipboardItem({
+                    "text/plain": new Blob([textToCopy], { type: "text/plain" }),
+                    "text/html": new Blob([htmlToCopy], { type: "text/html" })
+                });
+                await navigator.clipboard.write([clipboardItem]);
+                showToast();
+            } catch (err) {
+                // Fallback на простой текст, если ClipboardItem не работает (например, некоторые браузеры)
+                try {
+                    await navigator.clipboard.writeText(textToCopy);
+                    showToast();
+                } catch (e) {
+                    console.error('Failed to copy: ', e);
+                    alert('Не удалось скопировать. Выделите текст вручную или проверьте разрешения браузера.');
+                }
+            }
+        });
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
